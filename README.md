@@ -22,7 +22,7 @@ If you can't, or don't want to, use the SAR version, then carry on here...
 
 ## Setup
 
-1. Run the following from a terminal, substituting `YOUR_S3_BUCKET` for the S3 bucket described above, and `YOUR-INCOMING-WEBHOOK-URL` for the Slack URL described above:
+Run the following from a terminal, substituting `YOUR_S3_BUCKET` for the S3 bucket described above, and `YOUR-INCOMING-WEBHOOK-URL` for the Slack URL described above:
 
     ```bash
     $ npm install
@@ -33,6 +33,13 @@ If you can't, or don't want to, use the SAR version, then carry on here...
 
     $ aws cloudformation deploy --template-file ./target/packaged-template.yaml --stack-name cp-slack-notifier --parameter-overrides SlackUrl=YOUR-INCOMING-WEBHOOK-URL --capabilities CAPABILITY_IAM
     ```
+
+So an example deploy command would look like this (`CAPABILITY_IAM` does **not** need to be substituted):
+
+    ```bash
+    $ aws cloudformation --profile mf_production deploy --template-file target/packaged-template.yaml --stack-name cp-slack-notifier --parameter-overrides SlackUrl=https://hooks.slack.com/services/A1QSP9Y1D/AB0J125RX/XXXYYY --capabilities CAPABILITY_IAM
+    ```
+
 
 ## Testing
 
